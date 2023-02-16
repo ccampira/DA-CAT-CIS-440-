@@ -26,12 +26,16 @@ def button_click():
 def contact():
     bg_label.grid_forget()
     box1.grid_forget()
-    add_contact.grid()
+    contact_page.grid()
+    bg_label3.grid(row=0, column=0, rowspan=2, columnspan=1)
+    bg_label3.grid_propagate(False)
+    box2.place(rely=.3, relx=.22)
+
 
 def back():
-    add_contact.grid_forget()
-    box1.grid()
+    box2.place_forget()
     bg_label.grid()
+    box1.grid(row=0, columnspan=3)
 
 def close():
     window.destroy()
@@ -100,10 +104,10 @@ page_two = Frame(window, bg='black', width=1920, height=1080, borderwidth=1)
 page_three = Frame(window, bg='light blue', width=1920, height=1080, borderwidth=2)
 
 # ADD CUSTOMER FRAME
-add_frame = Frame(window, width=1920, height=1080, borderwidth=2)
+contact_page = Frame(window, width=1920, height=1080, borderwidth=2)
 
-# contact frame
-add_contact = Frame(window, bg='tan', width=1920, height=1080, borderwidth=2)
+# # contact frame
+# add_contact = Frame(window, bg='tan', width=1920, height=1080, borderwidth=2)
 
 
 #REFRESH PAGE
@@ -140,9 +144,9 @@ new_height3 = 1080
 wallpaper3 = bg2_img.resize((new_width3, new_height3), Image.ANTIALIAS)
 wallpaper3.save('wallpaper3.jpg')
 bg3 = ImageTk.PhotoImage(wallpaper3)
-bg_label3 = Label(add_frame, image=bg3)
-bg_label3.grid(column=0, row=0)
-bg_label3.grid_propagate(False)
+bg_label3 = Label(window, image=bg3)
+
+
 
 # refresh_frame = Frame(bg_label3, bg='white', width=1920, height=1080, borderwidth=1)
 # refresh_frame.grid(row=3, column=0)
@@ -161,6 +165,9 @@ pass_word.set("type 'hotel' for password")
 # FRAME WITH USERNAME & PASSWORD
 box1 = Frame(window, bg='white', width=310, height=200, borderwidth=2, relief=RAISED)
 box1.grid(row=0, columnspan=3)
+
+box2 = Frame(bg_label3, bg='white', width=310, height=200, borderwidth=2, relief=RAISED)
+
 
 # LOGO IMAGE
 logo = Image.open('thecat.png')
@@ -204,22 +211,22 @@ contact_button = Button(box1, command=contact, font=('Impact', 20), text='Contac
 contact_button.grid(row=6, column=3, columnspan=3)
 
 #back button
-back_button = Button(add_contact, command=back, font=('Impact', 20), text='Home',
+back_button = Button(box2, command=back, font=('Impact', 20), text='Home',
                        relief=GROOVE, bg='black', fg='white')
 # back_button.place(relx=.375, rely=.6)
 back_button.grid(row=6, column=3, columnspan=3)
 
-co_lbl = Label(add_contact, text='Welcome to DaCat Support', width=60, bg='gray',
+co_lbl = Label(box2, text='Welcome to DaCat Support', width=60, bg='gray',
                  font=('Arial', 20), fg='white')
 co_lbl.grid(row=5, column=3, columnspan=3)
 # co_lbl.place(relx=.15, rely=.4)
 
-service_lbl = Label(add_contact, text=f'Email: DaCatSupport@Gmail.com', width=60, bg='gray',
+service_lbl = Label(box2, text=f'Email: DaCatSupport@Gmail.com', width=60, bg='gray',
                     font=('Arial', 20), fg='white')
 service_lbl.grid(row=4,column=3,columnspan=3)
 # service_lbl.place(relx=.15, rely=.45)
 
-info_lbl = Label(add_contact, text='Phone: 1-800-888-8888', width=60, bg='gray',
+info_lbl = Label(box2, text='Phone: 1-800-888-8888', width=60, bg='gray',
                  font=('Arial', 20), fg='white')
 info_lbl.grid(row=3, column=3, columnspan=3)
 # info_lbl.place(relx=.15, rely=.5)
