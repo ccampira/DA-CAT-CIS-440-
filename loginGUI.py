@@ -70,7 +70,6 @@ help_.add_command(label='Demo', command=None)
 help_.add_separator()
 help_.add_command(label='About Tk', command=None)
 
-window.columnconfigure(0, weight=1)
 
 # background Image
 bg_img = Image.open('wallpaper.jpg')
@@ -80,8 +79,8 @@ wallpaper = bg_img.resize((new_width, new_height), Image.ANTIALIAS)
 wallpaper.save('wallpaper.jpg')
 bg = ImageTk.PhotoImage(wallpaper)
 bg_label = Label(window, image=bg)
-bg_label.grid(row=0, column=0, rowspan=2, columnspan=1)
-bg_label.grid_propagate(False)
+bg_label.grid(row=0, column=0)
+
 
 # PAGE 2
 page_two = Frame(window, bg='black', width=1920, height=1080, borderwidth=1)
@@ -143,47 +142,44 @@ pass_word.set("type 'hotel' for password")
 
 
 
-
-# logo_label.place(r0elx=.396, rely=.1)
-
-# FRAME WITH USERNAME & PASSWORD
-box1 = Frame(window, bg='white', width=310, height=200, borderwidth=2, relief=RAISED)
-box1.grid(row=0, columnspan=3)
-
 # LOGO IMAGE
 logo = Image.open('thecat.png')
-new_width = 300
-new_height = 225
+new_width = 250
+new_height = 250
 img = logo.resize((new_width, new_height), Image.ANTIALIAS)
 img.save('thecat.png')
 logo = ImageTk.PhotoImage(img)
-logo_label = Label(box1, image=logo)
-logo_label.grid(row=0, column=2, columnspan=3)
+logo_label = Label(window, image=logo)
+logo_label.place(relx=.396, rely=.1)
+
+# FRAME WITH USERNAME & PASSWORD
+box1 = Frame(window, bg='white', width=310, height=200, borderwidth=2, relief=RAISED)
+box1.place(relx=.31, rely=.4)
 
 # LOG IN TO YOUR ACCOUNT MESSAGE
-Login_label = Label(box1, text='Login to your Account', width=20, font=('Impact', 20), fg='black', bg= 'white')
-Login_label.grid(columnspan=2, row=1, column=2)
+Login_label = Label(box1, text='Login to your Account', width=20, font=('Impact', 20), fg='black')
+Login_label.grid(columnspan=2, row=0, column=2)
 
 # label for username and password
-username_label = Label(box1, text='Username', fg='black', font=('Impact', 20), bg='white')
-username_label.grid(columnspan=1, row=2, column=2, padx=50, pady=20)
-user_password = Label(box1, font=('Impact', 20), text='Password', bg='white')
-user_password.grid(columnspan=1, row=4, column=2, padx=50, pady=20)
+username_label = Label(box1, text='Username', fg='black', font=('Impact', 20))
+username_label.grid(columnspan=1, row=1, column=2, padx=50, pady=20)
+user_password = Label(box1, font=('Impact', 20), text='Password')
+user_password.grid(columnspan=1, row=3, column=2, padx=50, pady=20)
 
 # BOX 1, USER & PASSWORD ENTRY BOXES
 username_entry = Entry(box1, textvariable=user_name, justify=LEFT, width=30, font=('Verdana', 11))
-username_entry.grid(columnspan=1, row=2, column=3, padx=20, pady=20)
+username_entry.grid(columnspan=1, row=1, column=3, padx=20, pady=20)
 password_entry = Entry(box1, textvariable=pass_word, justify=LEFT, width=30, font=('Verdana', 11))
-password_entry.grid(columnspan=1, row=4, column=3, padx=20, pady=20)
+password_entry.grid(columnspan=1, row=3, column=3, padx=20, pady=20)
 
 results_lbl = Label(box1, justify=CENTER, font=('Verdana', 11), bg='white')
-results_lbl.grid(columnspan=2, row=5, column=2)
+results_lbl.grid(columnspan=2, row=4, column=2)
 
 
 # Submit button
-submit_button = Button(box1, command=button_click, font=('Impact', 20), text='Log In',
+submit_button = Button(bg_label, command=button_click, font=('Impact', 20), text='Log In',
                        relief=GROOVE, bg='black', fg='white')
-submit_button.grid(row=6, column=2, columnspan=3)
+submit_button.place(relx=.4, rely=.63)
 
 window.config(menu=menubar)
 window.mainloop()  # this displays the GUI
