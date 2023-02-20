@@ -16,8 +16,10 @@ def button_click():
             bg_label.grid_forget()
             box1.grid_forget()
             page_two.grid()
-            welcome_label.grid(row=0, column=0)
-            info_label.grid(row=1, column=0)
+            page_two.columnconfigure(0, weight=1)
+
+
+
     else:
         results_lbl.config(text='Username/Password is incorrect')
 
@@ -26,17 +28,19 @@ def contact():
     bg_label.grid_forget()
     box1.grid_forget()
     contact_page.grid()
-    bg_label3.grid(row=0, column=0, rowspan=2, columnspan=1)
-    bg_label3.grid_propagate(False)
-    box2.place(rely=.3, relx=.22)
+    contact_page.grid()
+    contact_page.columnconfigure(0, weight=1)
+    bg_label3.grid(rowspan=4, columnspan=1)
+    box2.grid(row=0, column=0)
+
 
 
 def back():
     contact_page.grid_forget()
     bg_label3.grid_forget()
-    box2.place_forget()
-    bg_label.grid()
-    box1.grid(row=0, columnspan=3)
+    box2.grid_forget()
+    bg_label.grid(row=0, column=0, rowspan=2, columnspan=1)
+    box1.grid(row=0, column=0)
 
 def close():
     window.destroy()
@@ -85,6 +89,9 @@ help_.add_command(label='Demo', command=None)
 help_.add_separator()
 help_.add_command(label='About Tk', command=None)
 
+window.attributes('-fullscreen', True)
+window.overrideredirect(True)
+
 window.columnconfigure(0, weight=1)
 
 # background Image
@@ -98,16 +105,15 @@ bg_label = Label(window, image=bg)
 bg_label.grid(row=0, column=0, rowspan=2, columnspan=1)
 
 
-# PAGE 2
-page_two = Frame(window, bg='black', width=1920, height=1080, borderwidth=1)
+
 
 # PAGE 3
 page_three = Frame(window, bg='light blue', width=1920, height=1080, borderwidth=2)
 
 # ADD CUSTOMER FRAME
-contact_page = Frame(window, width=1920, height=1080, borderwidth=2)
+contact_page = Frame(window, width=1920, height=1080)
 
-# # contact frame
+# #window.columnconfigure(0, weight=1) contact frame
 # add_contact = Frame(window, bg='tan', width=1920, height=1080, borderwidth=2)
 
 
@@ -115,37 +121,14 @@ contact_page = Frame(window, width=1920, height=1080, borderwidth=2)
 refresh_page = Frame(window, bg='light blue', width=1920, height=1080, borderwidth=2)
 
 
-
-# page_two - Customer LIST
-bg2_img = Image.open('wallpaper2.jpg')
-new_width2 = 1920
-new_height2 = 1080
-wallpaper2 = bg2_img.resize((new_width2, new_height2), Image.Resampling.LANCZOS)
-wallpaper2.save('wallpaper2.jpg')
-bg2 = ImageTk.PhotoImage(wallpaper2)
-bg_label2 = Label(page_two, image=bg2)
-bg_label2.grid(row=0, column=0)
-bg_label2.grid_propagate(False)
-
-
-
-# Welcome Label
-welcome_label = Label(bg_label2, text=f'WELCOME TO DACAT HOTEL & FLIGHT BOOKING SERVICES.', font=('Impact', 40),
-                      bg='white')
-
-info_label = Label(bg_label2, text=f'Pick your next destination down below', font=('Verdana', 20), bg='white')
-
-
-
-
 # ADD CUSTOMER PAGE----------------------------------------------------------------------------------------
 bg3_img = Image.open('wallpaper3.jpg')
 new_width3 = 1920
 new_height3 = 1080
-wallpaper3 = bg2_img.resize((new_width3, new_height3), Image.Resampling.LANCZOS)
+wallpaper3 = bg3_img.resize((new_width3, new_height3), Image.Resampling.LANCZOS)
 wallpaper3.save('wallpaper3.jpg')
 bg3 = ImageTk.PhotoImage(wallpaper3)
-bg_label3 = Label(window, image=bg3)
+bg_label3 = Label(contact_page, image=bg3)
 
 
 
@@ -159,15 +142,15 @@ pass_word = StringVar()
 pass_word.set("type 'hotel' for password")
 
 
-
-
 # logo_label.place(r0elx=.396, rely=.1)
 
 # FRAME WITH USERNAME & PASSWORD
 box1 = Frame(window, bg='white', width=310, height=200, borderwidth=2, relief=RAISED)
 box1.grid(row=0, columnspan=3)
 
-box2 = Frame(bg_label3, bg='white', width=310, height=200, borderwidth=2, relief=RAISED)
+box2 = Frame(contact_page, bg='white', width=310, height=200, borderwidth=2, relief=RAISED)
+
+
 
 
 # LOGO IMAGE
@@ -231,6 +214,83 @@ info_lbl = Label(box2, text='Phone: 1-800-888-8888', width=60, bg='gray',
                  font=('Arial', 20), fg='white')
 info_lbl.grid(row=3, column=3, columnspan=3)
 # info_lbl.place(relx=.15, rely=.5)
+
+############################################################################################################ PAGE 2
+page_two = Frame(window, bg='black', width=1920, height=1080, borderwidth=1)
+
+# Background IMAGE
+bg2_img = Image.open('wallpaper2.jpg')
+new_width2 = 1920
+new_height2 = 1080
+wallpaper2 = bg2_img.resize((new_width2, new_height2), Image.Resampling.LANCZOS)
+wallpaper2.save('wallpaper2.jpg')
+bg2 = ImageTk.PhotoImage(wallpaper2)
+bg_label2 = Label(page_two, image=bg2)
+bg_label2.grid(rowspan=4, columnspan=1)
+bg_label2.grid_propagate(False)
+
+box3 = Frame(page_two, bg='white', width=450, height=300, borderwidth=2, relief=RAISED)
+box3.grid(row=0, column=0)
+
+houston = Image.open('Houston.jpeg')
+new_width4 = 300
+new_height4 = 250
+houston2 = houston.resize((new_width4, new_height4), Image.Resampling.LANCZOS)
+houston2.save('Houston.jpeg')
+texas = ImageTk.PhotoImage(houston)
+
+chicago = Image.open('chicago.jpeg')
+chicago_width = 300
+chicago_height = 250
+chicago2 = chicago.resize((chicago_width, chicago_height), Image.Resampling.LANCZOS)
+chicago2.save('chicago.jpeg')
+illinois = ImageTk.PhotoImage(chicago2)
+
+LA = Image.open('LA.jpeg')
+LA_width = 300
+LA_height = 250
+LA2 = LA.resize((LA_width, LA_height), Image.Resampling.LANCZOS)
+LA2.save('LA.jpeg')
+california = ImageTk.PhotoImage(LA2)
+
+miami = Image.open('Miami.jpeg')
+miami_width = 300
+miami_height = 250
+miami2 = miami.resize((miami_width, miami_height), Image.Resampling.LANCZOS)
+miami2.save('Miami.jpeg')
+florida = ImageTk.PhotoImage(miami2)
+
+vegas = Image.open('vegas.jpeg')
+vegas_width = 300
+vegas_height = 250
+vegas2 = vegas.resize((vegas_width, vegas_height), Image.Resampling.LANCZOS)
+vegas2.save('vegas.jpeg')
+nevada = ImageTk.PhotoImage(vegas2)
+
+var = IntVar()
+r1= Radiobutton(box3, text='Houston', variable=var, value=1, image=texas, font=('Impact', 40))
+r1.grid(row=3, column=0, sticky=W)
+r2= Radiobutton(box3, text='Chicago', variable=var, value=2, image=illinois, font=('Impact', 40))
+r2.grid(row=3, column=0, sticky=W, padx=300)
+r3= Radiobutton(box3, text='Los Angeles', variable=var, value=3, image=california, font=('Impact', 40))
+r3.grid(row=3, column=0, sticky=W, padx=600)
+r4= Radiobutton(box3, text='Miami', variable=var, value=4, image=florida, font=('Impact', 40))
+r4.grid(row=3, column=0, sticky=W, padx=900)
+r5= Radiobutton(box3, text='Las Vegas', variable=var, value=5, image=nevada, font=('Impact', 40))
+r5.grid(row=3, column=0, sticky=W, padx=1200)
+
+# Welcome Label
+welcome_label = Label(box3, text=f'WELCOME TO DACAT HOTEL & FLIGHT BOOKING SERVICES.', font=('Impact', 40),
+                      bg='white')
+welcome_label.grid(row=0, column=0,sticky=W)
+info_label = Label(box3, text=f'Pick your next destination down below', font=('Verdana', 20), bg='white')
+info_label.grid(row=2, column=0, sticky=W)
+
+# Next button
+next_button = Button(box3, font=('Impact', 20), text='Next',
+                       relief=GROOVE, bg='black', fg='white')
+next_button.grid(row=6, column=0, columnspan=3)
+
 
 window.config(menu=menubar)
 window.mainloop()
