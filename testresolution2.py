@@ -134,7 +134,7 @@ user_accounts = json.load(file_handle)
 file_handle.close()
 
 window = Tk()
-window.state('zoomed')
+# window.state('zoomed')
 window.geometry('1280x800')  # left number is width, right number is height
 window.title('DA CAT')
 window.config(bg='#30D6FF')  # we are using rgb color
