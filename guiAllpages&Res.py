@@ -34,10 +34,19 @@ def contact():
     page_two.grid_forget()
     page_three.grid_forget()
     contact_page.grid()
-    contact_page.grid()
     contact_page.columnconfigure(0, weight=2)
     bg_label3.grid(rowspan=4, columnspan=1)
     box2.grid(row=0, column=0)
+
+def newUser():
+    bg_label.grid_forget()
+    box1.grid_forget()
+    page_two.grid_forget()
+    page_three.grid_forget()
+    newUser_page.grid()
+    newUser_page.columnconfigure(0, weight=2)
+    bg_label6.grid(rowspan=4, columnspan=1)
+    newUser_box.grid(row=0, column=0)
 
 
 
@@ -53,9 +62,13 @@ def close():
 
 def next_button_click():
     page_two.grid_forget()
- #   box3.grid_forget()
     page_three.grid()
     page_three.columnconfigure(0, weight=3)
+
+def nextPage():
+    page_three.grid_forget()
+    confirmation_page.grid()
+    confirmation_page.columnconfigure(0, weight=3)
 
 
 def add_custom_drink():
@@ -187,31 +200,6 @@ bg_label = Label(window, image=bg)
 bg_label.grid(row=0, column=0, rowspan=2, columnspan=1)
 
 
-# ADD CUSTOMER FRAME
-contact_page = Frame(window, width=1280, height=800)
-
-# #window.columnconfigure(0, weight=1) contact frame
-# add_contact = Frame(window, bg='tan', width=1920, height=1080, borderwidth=2)
-
-
-#REFRESH PAGE
-refresh_page = Frame(window, bg='light blue', width=1280, height=800, borderwidth=2)
-
-
-# ADD CUSTOMER PAGE----------------------------------------------------------------------------------------
-bg3_img = Image.open('wallpaper3.jpg')
-new_width3 = 1280
-new_height3 = 800
-wallpaper3 = bg3_img.resize((new_width3, new_height3), Image.Resampling.LANCZOS)
-wallpaper3.save('wallpaper3.jpg')
-bg3 = ImageTk.PhotoImage(wallpaper3)
-bg_label3 = Label(contact_page, image=bg3)
-
-
-
-# refresh_frame = Frame(bg_label3, bg='white', width=1920, height=1080, borderwidth=1)
-# refresh_frame.grid(row=3, column=0)
-
 # Configure variables
 user_name = StringVar()
 user_name.set("Type 'dacat' for username")
@@ -225,7 +213,6 @@ pass_word.set("type 'hotel' for password")
 box1 = Frame(window, bg='white', width=310, height=200, borderwidth=2, relief=RAISED)
 box1.grid(row=0, columnspan=3)
 
-box2 = Frame(contact_page, bg='white', width=310, height=200, borderwidth=2, relief=RAISED)
 
 
 
@@ -237,7 +224,7 @@ new_height = 225
 img = logo.resize((new_width, new_height), Image.Resampling.LANCZOS)
 img.save('thecat.png')
 logo = ImageTk.PhotoImage(img)
-logo_label = Label(box1, image=logo)
+logo_label = Label(box1, image=logo, bg='white')
 logo_label.grid(row=0, column=0, columnspan=4)
 
 # LOG IN TO YOUR ACCOUNT MESSAGE
@@ -271,11 +258,27 @@ contact_button = Button(box1, command=contact, font=('Impact', 20), text='Contac
 # contact_button.place(relx=.32, rely=.63)
 contact_button.grid(row=7, column=1, sticky=E)
 
-#contact button
-newUser_button = Button(box1, command=contact, font=('Impact', 20), text='New User',
+#new user button
+newUser_button = Button(box1, command=newUser, font=('Impact', 20), text='New User',
                        relief=GROOVE, bg='black', fg='white')
-# contact_button.place(relx=.32, rely=.63)
 newUser_button.grid(row=7,column=0)
+
+
+
+############################################################################################# CONTACT PAGE
+
+
+# Create Contact Page
+contact_page = Frame(window, width=1280, height=800)
+
+bg3_img = Image.open('wallpaper3.jpg')
+new_width3 = 1280
+new_height3 = 800
+wallpaper3 = bg3_img.resize((new_width3, new_height3), Image.Resampling.LANCZOS)
+wallpaper3.save('wallpaper3.jpg')
+bg3 = ImageTk.PhotoImage(wallpaper3)
+bg_label3 = Label(contact_page, image=bg3)
+box2 = Frame(contact_page, bg='white', width=310, height=200, borderwidth=2, relief=RAISED)
 
 #back button
 back_button = Button(box2, command=back, font=('Impact', 20), text='Home',
@@ -298,7 +301,24 @@ info_lbl = Label(box2, text='Phone: 1-800-888-8888', width=60, bg='gray',
 info_lbl.grid(row=3, column=3, columnspan=3)
 # info_lbl.place(relx=.15, rely=.5)
 
-############################################################################################################ PAGE 2
+
+
+############################################################################################# NEW USER PAGE
+newUser_page = Frame(window, width=1280, height=800)
+
+bg6_img = Image.open('wallpaper3.jpg')
+new_width6 = 1280
+new_height6 = 800
+wallpaper6 = bg6_img.resize((new_width6, new_height6), Image.Resampling.LANCZOS)
+wallpaper6.save('wallpaper3.jpg')
+bg6 = ImageTk.PhotoImage(wallpaper3)
+bg_label6 = Label(newUser_page, image=bg6)
+
+newUser_box = Frame(newUser_page, bg='white', width=310, height=200, borderwidth=2, relief=RAISED)
+
+
+
+#################################################################################################### Destination Page
 page_two = Frame(window, bg='black', width=1920, height=1080, borderwidth=1)
 
 # Background IMAGE
@@ -433,8 +453,13 @@ welcome_label = Label(box3, text=f'WELCOME TO DACAT HOTEL & FLIGHT BOOKING SERVI
 welcome_label.grid(row=0, column=0,sticky=W)
 info_label = Label(box3, text=f'Pick your next destination down below', font=('Verdana', 20), bg='white')
 info_label.grid(row=2, column=0, sticky=W)
-############################################################################################################ PAGE 3
-# PAGE 3
+
+# Next button
+next_button = Button(box3, command=next_button_click, font=('Impact', 20), text='Next',
+                       relief=GROOVE, bg='black', fg='white')
+next_button.grid(row=9, column=0, columnspan=3)
+
+############################################################################################# Hotel Booking Page
 page_three = Frame(window, bg='black', width=1280, height=800, borderwidth=2)
 
 # Background IMAGE
@@ -451,10 +476,6 @@ bg_label5.grid_propagate(False)
 box10 = Frame(page_three, bg='white', width=450, height=300, borderwidth=2, relief=RAISED)
 box10.grid(row=0, column=0)
 
-# Next button
-next_button = Button(box3, command=next_button_click, font=('Impact', 20), text='Next',
-                       relief=GROOVE, bg='black', fg='white')
-next_button.grid(row=9, column=0, columnspan=3)
 
 # variables
 checkvar1 = IntVar()
@@ -482,18 +503,6 @@ values = {"RadioButton 1": "1",
 # able to store any string value
 v = StringVar(window, "1")
 
-
-canvas = Canvas(box10, width=200, height=200, bg='green')
-canvas.grid(column=1, sticky=N)
-
-logo_label = Label(canvas, image=logo, bg='white')
-logo_label.grid(column=1, columnspan=1)
-
-
-# labels
-#title_label = Label(box3, text="DACAT Hotel Bookings", justify=CENTER, font=('Arial', 18),
-#                   bg='black', fg='white', width=300)
-#title_label.grid(row=1, column=0, pady=3, ipady=0)
 
 # frame
 box0 = Frame(box10, bg='#354d8b', width=600, height=150,
@@ -593,6 +602,27 @@ exit_button2.grid(column=4, row=0, padx=50, pady=0, sticky=E, ipady=5)
 #contact button
 contact_button2 = Button(box0, command=contact, font=('Impact', 16), text='Contact')
 contact_button2.grid(column=0, row=0, padx=50, pady=0, sticky=W, ipady=5, columnspan=2)
+
+#contact button
+next_button2 = Button(box10, command=nextPage, font=('Impact', 16), text='Next')
+next_button2.grid(column=0, row=11, padx=50, pady=0, sticky=W, ipady=5, columnspan=2)
+
+######################################################################################## CONFIRMATION PAGE
+confirmation_page = Frame(window, bg='black', width=1280, height=800, borderwidth=2)
+
+# Background IMAGE
+bg7_img = Image.open('wallpaper3.jpg')
+new_width7 = 1280
+new_height7 = 800
+wallpaper7 = bg7_img.resize((new_width7, new_height7), Image.Resampling.LANCZOS)
+wallpaper7.save('wallpaper3.jpg')
+bg7 = ImageTk.PhotoImage(wallpaper7)
+bg_label7 = Label(confirmation_page, image=bg7)
+bg_label7.grid(rowspan=4, columnspan=1)
+bg_label7.grid_propagate(False)
+
+confirmation_box = Frame(confirmation_page, bg='white', width=450, height=300, borderwidth=2, relief=RAISED)
+confirmation_box.grid(row=0, column=0)
 
 
 window.config(menu=menubar)
