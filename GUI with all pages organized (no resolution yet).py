@@ -238,38 +238,44 @@ img = logo.resize((new_width, new_height), Image.Resampling.LANCZOS)
 img.save('thecat.png')
 logo = ImageTk.PhotoImage(img)
 logo_label = Label(box1, image=logo)
-logo_label.grid(row=0, column=2, columnspan=3)
+logo_label.grid(row=0, column=0, columnspan=4)
 
 # LOG IN TO YOUR ACCOUNT MESSAGE
 Login_label = Label(box1, text='Login to your Account', width=20, font=('Impact', 20), fg='black', bg= 'white')
-Login_label.grid(columnspan=2, row=1, column=2)
+Login_label.grid(columnspan=4, row=1, column=0)
 
 # label for username and password
 username_label = Label(box1, text='Username', fg='black', font=('Impact', 20), bg='white')
-username_label.grid(columnspan=1, row=2, column=2, padx=50, pady=20)
+username_label.grid(columnspan=1, row=3, column=0, pady=20)
 user_password = Label(box1, font=('Impact', 20), text='Password', bg='white')
-user_password.grid(columnspan=1, row=4, column=2, padx=50, pady=20)
+user_password.grid(columnspan=1, row=4, column=0)
 
 # BOX 1, USER & PASSWORD ENTRY BOXES
 username_entry = Entry(box1, textvariable=user_name, justify=LEFT, width=30, font=('Verdana', 11))
-username_entry.grid(columnspan=1, row=2, column=3, padx=20, pady=20)
+username_entry.grid(row=3, column=1, pady=20,  sticky=W)
 password_entry = Entry(box1, textvariable=pass_word, justify=LEFT, width=30, font=('Verdana', 11))
-password_entry.grid(columnspan=1, row=4, column=3, padx=20, pady=20)
+password_entry.grid(row=4, column=1, sticky=W)
 
 results_lbl = Label(box1, justify=CENTER, font=('Verdana', 11), bg='white')
-results_lbl.grid(columnspan=2, row=5, column=2)
+results_lbl.grid(columnspan=3, row=2, column=0)
 
 
 # Submit button
 submit_button = Button(box1, command=button_click, font=('Impact', 20), text='Log In',
-                       relief=GROOVE, bg='black', fg='white')
-submit_button.grid(row=6, column=2, columnspan=3)
+                       relief=GROOVE, bg='#354d8b', fg='white')
+submit_button.grid(row=5, column=0, columnspan=3, pady=30, sticky=N)
 
 #contact button
 contact_button = Button(box1, command=contact, font=('Impact', 20), text='Contact',
+                       relief=GROOVE, bg='black', fg='white', width=8)
+# contact_button.place(relx=.32, rely=.63)
+contact_button.grid(row=7, column=1, sticky=E)
+
+#contact button
+newUser_button = Button(box1, command=contact, font=('Impact', 20), text='New User',
                        relief=GROOVE, bg='black', fg='white')
 # contact_button.place(relx=.32, rely=.63)
-contact_button.grid(row=6, column=3, columnspan=3)
+newUser_button.grid(row=7,column=0)
 
 #back button
 back_button = Button(box2, command=back, font=('Impact', 20), text='Home',
@@ -382,32 +388,32 @@ pennsylvania = ImageTk.PhotoImage(Philly2)
 var = IntVar()
 r1= Radiobutton(box3, text='Houston', variable=var, value=1, image=texas, font=('Impact', 40))
 r1.grid(row=3, column=0, sticky=W)
-houston_lbl = Label(box3, justify=CENTER, font=('Impact', 30), bg='white', text='HOUSTON')
-houston_lbl.grid(row=4, column=0, sticky=W, padx=90)
+houston_lbl = Label(box3, justify=CENTER, font=('Impact', 30), bg='white', text='Houston')
+houston_lbl.grid(row=4, column=0, sticky=W, padx=100)
 r2= Radiobutton(box3, text='Chicago', variable=var, value=2, image=illinois, font=('Impact', 40))
 r2.grid(row=3, column=0, sticky=W, padx=300)
-chicago_lbl = Label(box3, justify=CENTER, font=('Impact', 30), bg='white', text='CHICAGO')
+chicago_lbl = Label(box3, justify=CENTER, font=('Impact', 30), bg='white', text='Chicago')
 chicago_lbl.grid(row=4, column=0, sticky=W, padx=390)
 r3= Radiobutton(box3, text='Los Angeles', variable=var, value=3, image=california, font=('Impact', 40))
 r3.grid(row=3, column=0, sticky=W, padx=600)
-losAngeles_lbl = Label(box3, justify=CENTER, font=('Impact', 30), bg='white', text='LOS ANGELES')
+losAngeles_lbl = Label(box3, justify=CENTER, font=('Impact', 30), bg='white', text='Los Angeles')
 losAngeles_lbl.grid(row=4, column=0, sticky=W, padx=670)
 r4= Radiobutton(box3, text='Miami', variable=var, value=4, image=florida, font=('Impact', 40))
 r4.grid(row=3, column=0, sticky=W, padx=900)
-miami_lbl = Label(box3, justify=CENTER, font=('Impact', 30), bg='white', text='MIAMI')
+miami_lbl = Label(box3, justify=CENTER, font=('Impact', 30), bg='white', text='Miami')
 miami_lbl.grid(row=4, column=0, sticky=W, padx=1010)
 r5= Radiobutton(box3, text='Las Vegas', variable=var, value=5, image=nevada, font=('Impact', 40))
 r5.grid(row=3, column=0, sticky=W, padx=1200)
-lasVegas_lbl = Label(box3, justify=CENTER, font=('Impact', 30), bg='white', text='LAS VEGAS')
-lasVegas_lbl.grid(row=4, column=0, sticky=W, padx=1290)
+lasVegas_lbl = Label(box3, justify=CENTER, font=('Impact', 30), bg='white', text='Las Vegas')
+lasVegas_lbl.grid(row=4, column=0, sticky=W, padx=1300)
 r6= Radiobutton(box3, text='PHX', variable=var, value=6, image=arizona, font=('Impact', 40))
 r6.grid(row=6, column=0, sticky=W)
-phoenix_lbl = Label(box3, justify=CENTER, font=('Impact', 30), bg='white', text='PHOENIX')
-phoenix_lbl.grid(row=7, column=0, sticky=W, padx=90)
+phoenix_lbl = Label(box3, justify=CENTER, font=('Impact', 30), bg='white', text='Phoenix')
+phoenix_lbl.grid(row=7, column=0, sticky=W, padx=100)
 r7= Radiobutton(box3, text='NY', variable=var, value=7, image=newyork, font=('Impact', 40))
 r7.grid(row=6, column=0, sticky=W, padx=300)
 ny_lbl = Label(box3, justify=CENTER, font=('Impact', 30), bg='white', text='New York')
-ny_lbl.grid(row=7, column=0, sticky=W, padx=400)
+ny_lbl.grid(row=7, column=0, sticky=W, padx=390)
 r8= Radiobutton(box3, text='portland', variable=var, value=8, image=oregon, font=('Impact', 40))
 r8.grid(row=6, column=0, sticky=W, padx=600)
 portland_lbl = Label(box3, justify=CENTER, font=('Impact', 30), bg='white', text='Portland')
@@ -419,7 +425,7 @@ seattle_lbl.grid(row=7, column=0, sticky=W, padx=1000)
 r10= Radiobutton(box3, text='Philly', variable=var, value=10, image=pennsylvania, font=('Impact', 40))
 r10.grid(row=6, column=0, sticky=W, padx=1200)
 philly_lbl = Label(box3, justify=CENTER, font=('Impact', 30), bg='white', text='Philadelphia')
-philly_lbl.grid(row=7, column=0, sticky=W, padx=1300)
+philly_lbl.grid(row=7, column=0, sticky=W, padx=1280)
 
 # Welcome Label
 welcome_label = Label(box3, text=f'WELCOME TO DACAT HOTEL & FLIGHT BOOKING SERVICES.', font=('Impact', 40),
@@ -531,25 +537,25 @@ custom_box.grid(row=10, column=0, columnspan=3, pady=5)
 custom_box.bind('<Double-Button-1>', doubleclick_to_delete)
 
 
-hotel_label = Label(box5, text='Hotel', justify=CENTER, font=('Impact', 16), bg='#354d8b', fg='black')
+hotel_label = Label(box5, text='Hotel', justify=CENTER, font=('Impact', 16), bg='#354d8b', fg='white')
 hotel_label.grid(row=1, column=0, pady=5, padx=10, sticky=W)
 hotel_box = ttk.Combobox(box5, values=hotel)
 hotel_box.grid(row=2, column=0, pady=2, padx=10, sticky=EW)
 hotel_box.set('Select a Hotel')
 
-rooms_label = Label(box5, text='Room', justify=CENTER, font=('Impact', 16), bg='#354d8b', fg='black')
+rooms_label = Label(box5, text='Room', justify=CENTER, font=('Impact', 16), bg='#354d8b', fg='white')
 rooms_label.grid(row=1, column=1, pady=5, sticky=W)
 rooms_box = ttk.Combobox(box5, values=rooms)
 rooms_box.grid(row=2, column=1, pady=2, sticky=EW)
 rooms_box.set('Select Number of Rooms')
 
-guests_label = Label(box5, text='Guests', justify=CENTER, font=('Impact', 16), bg='#354d8b', fg='black')
+guests_label = Label(box5, text='Guests', justify=CENTER, font=('Impact', 16), bg='#354d8b', fg='white')
 guests_label.grid(row=1, column=2, pady=5, padx=10, sticky=W)
 guests_box = ttk.Combobox(box5, values=guests)
 guests_box.grid(row=2, column=2, pady=5, padx=10, sticky=EW)
 guests_box.set('Select Number of Guests')
 
-addon_label = Label(box6, text='Room Type', justify=CENTER, font=('Impact', 16), bg='#354d8b', fg='black')
+addon_label = Label(box6, text='Room Type', justify=CENTER, font=('Impact', 16), bg='#354d8b', fg='white')
 addon_label.grid(row=1, columnspan=3, pady=5, sticky=EW)
 
 single = Radiobutton(box6, text="Single Room", font=('Impact', 14),
@@ -560,7 +566,7 @@ double = Radiobutton(box6, text="Double Room", font=('Impact', 14),
                      variable=v, value='Double Room(s)',    highlightthickness=0, background="#354d8b")
 double.grid(row=3, column=1, padx=10, sticky=EW)
 
-name_label = Label(box0, text='Enter Name: ', justify=CENTER, font=('Impact', 16), bg='#354d8b', fg='black', width=30)
+name_label = Label(box0, text='Enter Name: ', justify=CENTER, font=('Impact', 16), bg='#354d8b', fg='white', width=30)
 name_label.grid(row=3, column=1, pady=20, sticky=S, columnspan=1)
 name_textbox = Entry(box0, justify=LEFT, font=('Impact', 16), width=25)
 name_textbox.grid(row=3, column=2, pady=16, sticky=W, columnspan=2)
@@ -581,8 +587,8 @@ reset_button.grid(column=4, row=3, pady=17, padx=50, sticky=W)
 custom_button = Button(box4, font=("Impact", 14), text='Book Hotel', width=20, command=add_custom_drink)
 custom_button.grid(column=0, row=0, pady=2, padx=0, columnspan=2)
 exit_button2 = Button(box0, command=close,
-                     font=("Impact", 16), text='LOGOUT', width=5)
-exit_button2.grid(column=4, row=0, padx=50, pady=0, sticky=E, ipady=5, ipadx=30)
+                     font=("Impact", 16), text='Log Out')
+exit_button2.grid(column=4, row=0, padx=50, pady=0, sticky=E, ipady=5)
 
 #contact button
 contact_button2 = Button(box0, command=contact, font=('Impact', 16), text='Contact')
