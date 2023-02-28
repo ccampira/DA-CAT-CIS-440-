@@ -5,6 +5,7 @@ from classes import BookHotel
 from os import path
 import time
 import json
+import csv
 
 
 file_handle = open('users.json')
@@ -126,6 +127,24 @@ def final():
 
 def close():
     window.destroy()
+
+def ticket_selected(event):
+    selection = combo_box.get()
+    print(combo_box.current(), selection)
+
+def add_flights():
+    if not path.isfile('DACAT-FlightRecords.csv'):
+        with open('DACAT-FlightRecords.csv', 'w') as fp:
+            data = csv.writer(fp)
+            data.writerow(['Destination', 'Departure Date', 'Ticket Amount', 'Time'])
+
+    # if path.isfile('DACAT-FlightRecords.csv'):
+    with open('DACAT-FlightRecords.csv', 'a') as fp:
+        data = csv.writer(fp)
+        data.writerow([var.get(), dep_entry.get(), combo_box.get(), time.ctime()])
+
+        # confirm_lbl.config(text=f'Thank you, your flight has been booked!')
+        confirm_lbl.config(text=f'Your flight has been booked!')
 
 def next_button_click():
     page_two.grid_forget()
@@ -507,6 +526,7 @@ Philly2 = Philly.resize((Philly_width, Philly_height), Image.Resampling.LANCZOS)
 Philly2.save('Philly.jpeg')
 pennsylvania = ImageTk.PhotoImage(Philly2)
 
+
 var = StringVar(window, "1")
 r1= Radiobutton(box3, text='Houston', variable=var, value='Houston', image=texas, font=('Impact', 40))
 r1.grid(row=3, column=0, sticky=W)
@@ -572,6 +592,33 @@ bg_label5 = Label(page_three, image=bg5)
 bg_label5.grid(rowspan=4, columnspan=1)
 bg_label5.grid_propagate(False)
 
+# ticketing
+ticket = ['1', '2', '3', '4']
+ticket_lbl = Label(box3, text='Tickets: ', width=15, bg='beige',
+                   font=('Impact', 20), fg='black')
+ticket_lbl.grid( padx=5, row=9,  column=0, sticky=W)
+combo_box = ttk.Combobox(box3, values=ticket)
+combo_box.grid( padx= 25, column=0, row=10, sticky=W)
+combo_box.bind('ComboboxSelected>>', ticket_selected)
+combo_box.current(0)
+
+# departure
+dep = StringVar()
+dep_lbl = Label(box3, text="Enter Departure Date: ", width=25, bg='beige',
+                font=('Impact', 20), fg='black')
+dep_lbl.grid( padx=300, row=9,  column=0, sticky=W)
+dep_entry = Entry(box3, textvariable=dep, justify=CENTER,
+                  font=('chalkboard', 16), width=20)
+dep_entry.grid(padx=333, pady=7, column=0, row=10,  sticky=W)
+
+#flight confirmation
+confirm_lbl = Label(box3, text="Flight Information", width=30, height=2)
+confirm_lbl.grid(padx=700, row=9, column=0, sticky=W)
+
+# add flight
+add_flight = Button(box3, command=add_flights, font=('Impact', 20), text='Add flight',
+                       relief=GROOVE, bg='black', fg='white')
+add_flight.grid(padx=950, row=9, column=0, sticky=W)
 
 # Next button
 next_button = Button(box3, command=next_button_click, font=('Impact', 20), text='Next',
