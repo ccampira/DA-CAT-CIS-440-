@@ -339,7 +339,6 @@ home_button = Button(create_box, command=back_to_login, font=('Impact', 14), tex
 home_button.grid(row=6, column=0, columnspan=3)
 
 
-################## ADD CUSTOMER PAGE----------------------------------------------------------------------------------------
 bg3_img = Image.open('wallpaper3.jpg')
 new_width3 = 1280
 new_height3 = 800
@@ -461,7 +460,7 @@ new_width4 = 200
 new_height4 = 200
 houston2 = houston.resize((new_width4, new_height4), Image.Resampling.LANCZOS)
 houston2.save('Houston.jpeg')
-texas = ImageTk.PhotoImage(houston)
+texas = ImageTk.PhotoImage(houston2)
 
 chicago = Image.open('chicago.jpeg')
 chicago_width = 200
@@ -606,7 +605,7 @@ combo_box.current(0)
 dep = StringVar()
 dep_lbl = Label(box3, text="Enter Departure Date: ", width=25, bg='beige',
                 font=('Impact', 20), fg='black')
-dep_lbl.grid( padx=300, row=9,  column=0, sticky=W)
+dep_lbl.grid(padx=300, row=9,  column=0, sticky=W)
 dep_entry = Entry(box3, textvariable=dep, justify=CENTER,
                   font=('chalkboard', 16), width=20)
 dep_entry.grid(padx=333, pady=7, column=0, row=10,  sticky=W)
@@ -701,7 +700,7 @@ hotel_box = ttk.Combobox(box5, values=hotel)
 hotel_box.grid(row=2, column=0, pady=2, padx=10, sticky=EW)
 hotel_box.set('Select a Hotel')
 
-rooms_label = Label(box5, text='Room', justify=CENTER, font=('Impact', 16), bg='#354d8b', fg='white')
+rooms_label = Label(box5, text='Rooms', justify=CENTER, font=('Impact', 16), bg='#354d8b', fg='white')
 rooms_label.grid(row=1, column=1, pady=5, sticky=W)
 rooms_box = ttk.Combobox(box5, values=rooms)
 rooms_box.grid(row=2, column=1, pady=2, sticky=EW)
